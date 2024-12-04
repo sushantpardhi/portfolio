@@ -1,0 +1,136 @@
+.projects {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  color: #fff;
+  z-index: 2;
+  padding: 3rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #61dafb;
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.categoryBtn {
+  background: rgba(97, 218, 251, 0.1);
+  border: 1px solid rgba(97, 218, 251, 0.2);
+  color: #61dafb;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.categoryBtn:hover {
+  background: rgba(97, 218, 251, 0.2);
+}
+
+.categoryBtn.active {
+  background: rgba(97, 218, 251, 0.3);
+  border-color: #61dafb;
+  box-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 350px);
+  gap: 2rem;
+  min-height: 400px;
+  justify-content: center;
+}
+
+.projectCard {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(97, 218, 251, 0.1);
+  transition: transform 0.3s ease;
+  width: 350px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+}
+
+.projectTitle {
+  color: #61dafb;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: #abb2bf;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech {
+  background: rgba(97, 218, 251, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: #61dafb;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.links a {
+  color: #98c379;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #61dafb;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 350px;
+  }
+}

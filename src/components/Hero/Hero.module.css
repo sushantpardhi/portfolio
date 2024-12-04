@@ -1,0 +1,124 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  padding: 2rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  position: relative;
+  max-width: 800px;
+  width: 90%;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #61dafb;
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #61dafb, #e06c75);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #e06c75;
+  margin-bottom: 2rem;
+}
+
+.description {
+  color: #98c379;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(97, 218, 251, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.description::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+.scrollSection {
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.floatingShape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(97, 218, 251, 0.1);
+  filter: blur(5px);
+  z-index: 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape1 {
+  composes: floatingShape;
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  right: -30px;
+}
+
+.shape2 {
+  composes: floatingShape;
+  width: 150px;
+  height: 150px;
+  bottom: -70px;
+  left: -50px;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.socialIcon {
+  font-size: 1.8rem;
+  color: #61dafb;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.socialIcon:hover {
+  transform: translateY(-3px);
+  opacity: 1;
+  filter: drop-shadow(0 0 8px #61dafb);
+}
+
