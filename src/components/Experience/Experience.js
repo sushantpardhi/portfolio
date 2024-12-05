@@ -11,7 +11,7 @@ const Experience = () => {
         variants={animations.containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }} // Reduced threshold for mobile
       >
         <motion.h2 className={styles.title} variants={animations.itemVariants}>
           Experience

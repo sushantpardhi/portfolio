@@ -137,3 +137,44 @@
     grid-template-columns: 350px;
   }
 }
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .projectCard {
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+  }
+
+  .categoryBtn {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .categories {
+    gap: 0.5rem;
+  }
+}

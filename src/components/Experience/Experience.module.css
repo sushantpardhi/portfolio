@@ -1,4 +1,3 @@
-
 .experience {
   min-height: 100vh;
   display: flex;
@@ -12,7 +11,7 @@
   width: 100%;
   color: #fff;
   z-index: 2;
-  padding: 3rem;
+  padding: clamp(1rem, 5vw, 3rem);
   border-radius: 10px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -22,7 +21,7 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   margin-bottom: 3rem;
   color: #61dafb;
   text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
@@ -112,16 +111,70 @@
 }
 
 @media (max-width: 768px) {
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
   .timeline::before {
-    left: 0;
+    display: none; /* Remove vertical line */
   }
   
   .timelineItem {
-    width: calc(100% - 30px);
-    margin-left: 30px;
+    width: 100%;
+    max-width: 500px;
+    padding-left: 0; /* Remove left padding since we don't need space for the line */
+    margin-left: 0;
+    left: 0 !important; /* Override both odd and even items */
   }
   
   .timelineItem:nth-child(even) {
     left: 0;
+    margin-left: 0;
+  }
+
+  .card {
+    margin: 0 auto; /* Center the cards */
+    max-width: 500px; /* Optional: limit card width on mobile */
+    padding: clamp(1rem, 3vw, 1.5rem);
+    width: 100%;
+  }
+
+  .role {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  .company {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+  }
+
+  .description {
+    font-size: clamp(0.85rem, 3vw, 0.95rem);
+  }
+
+  .skills {
+    gap: 0.3rem;
+  }
+
+  .skill {
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .timeline::before {
+    left: 15px;
+  }
+
+  .timelineItem {
+    padding-left: 35px;
+    margin-bottom: 2rem; /* Reduce spacing between cards on mobile */
   }
 }
