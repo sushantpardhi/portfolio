@@ -137,16 +137,32 @@ function App() {
           }}
         />
         <Hero />
-        <div ref={aboutRef} className={`section-hidden ${aboutInView ? 'section-visible' : ''}`}>
+        <div
+          ref={aboutRef}
+          className={`section-hidden ${aboutInView ? "section-visible" : ""}`}
+        >
           <About />
         </div>
-        <div ref={experienceRef} className={`section-hidden ${experienceInView ? 'section-visible' : ''}`}>
+        <div
+          ref={experienceRef}
+          className={`section-hidden ${
+            experienceInView ? "section-visible" : ""
+          }`}
+        >
           <Experience />
         </div>
-        <div ref={projectsRef} className={`section-hidden ${projectsInView ? 'section-visible' : ''}`}>
+        <div
+          ref={projectsRef}
+          className={`section-hidden ${
+            projectsInView ? "section-visible" : ""
+          }`}
+        >
           <Projects />
         </div>
-        <div ref={contactRef} className={`section-hidden ${contactInView ? 'section-visible' : ''}`}>
+        <div
+          ref={contactRef}
+          className={`section-hidden ${contactInView ? "section-visible" : ""}`}
+        >
           <Contact />
         </div>
       </div>

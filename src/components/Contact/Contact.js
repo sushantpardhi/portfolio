@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { contact } from "../../constants/data";
 import styles from "./Contact.module.css";
 
 const Contact = () => {
@@ -8,11 +9,59 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState({
+    loading: false,
+    success: false,
+    error: null,
+  });
 
-  const handleSubmit = (e) => {
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log(formData);
+    if (!validateEmail(formData.email)) {
+      setStatus({ ...status, error: "Please enter a valid email" });
+      return;
+    }
+
+    setStatus({ loading: true, success: false, error: null });
+    try {
+      const response = await fetch(contact.form.submitEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New contact from ${formData.name}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setStatus({ loading: false, success: true, error: null });
+      setFormData({ name: "", email: "", message: "" });
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setStatus((prev) => ({ ...prev, success: false }));
+      }, 5000);
+    } catch (error) {
+      setStatus({
+        loading: false,
+        success: false,
+        error: "Failed to send message. Please try again or email directly.",
+      });
+    }
   };
 
   const handleChange = (e) => {
@@ -32,6 +81,14 @@ const Contact = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className={styles.title}>Contact Me</h2>
+        <p className={styles.subtitle}>
+          Have a question or want to work together? <br></br>Write to me below
+          or email me directly at{" "}
+          <a href={`mailto:${contact.email}`} className={styles.emailLink}>
+            {contact.email}
+          </a>
+        </p>
+
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <label className={styles.label}>Name</label>
@@ -65,8 +122,22 @@ const Contact = () => {
               required
             />
           </div>
-          <button type="submit" className={styles.button}>
-            Send Message
+
+          {status.error && <div className={styles.error}>{status.error}</div>}
+          {status.success && (
+            <div className={styles.success}>
+              Thank you for your message! I'll get back to you soon.
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className={`${styles.button} ${
+              status.loading ? styles.loading : ""
+            }`}
+            disabled={status.loading}
+          >
+            {status.loading ? "Sending..." : "Send Message"}
           </button>
         </form>
       </motion.div>

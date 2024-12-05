@@ -1,96 +1,116 @@
-export const projects = [
-  {
-    title: "AI-Powered Portfolio Generator",
-    description:
-      "A web application that automatically generates portfolio websites using AI to analyze users' professional data.",
-    technologies: ["React", "OpenAI API", "Node.js", "MongoDB"],
-    githubLink: "https://github.com/username/portfolio-gen",
-    liveLink: "https://portfolio-gen.demo.com",
-    category: "ai",
-  },
-  {
-    title: "Smart Home Dashboard",
-    description:
-      "IoT dashboard for monitoring and controlling smart home devices with real-time updates and automation features.",
-    technologies: ["React", "Socket.io", "Express", "MQTT"],
-    githubLink: "https://github.com/username/smart-home",
-    liveLink: "https://smart-home.demo.com",
-    category: "iot",
-  },
-  {
-    title: "Blockchain Exchange Platform",
-    description:
-      "Decentralized exchange platform for trading cryptocurrencies with wallet integration and real-time charts.",
-    technologies: ["Web3.js", "Solidity", "React", "GraphQL"],
-    githubLink: "https://github.com/username/crypto-exchange",
-    liveLink: "https://crypto-exchange.demo.com",
-    category: "blockchain",
-  },
-  {
-    title: "AI Chat Application",
-    description:
-      "Real-time chat application with AI-powered language translation and content moderation.",
-    technologies: ["React", "TensorFlow.js", "WebSocket", "Node.js"],
-    githubLink: "https://github.com/username/ai-chat",
-    liveLink: "https://ai-chat.demo.com",
-    category: "ai",
-  },
-];
-
-export const categories = [
-  { id: "all", label: "All Projects" },
-  { id: "ai", label: "AI & ML" },
-  { id: "blockchain", label: "Blockchain" },
-  { id: "iot", label: "IoT" },
-];
-
-export const experiences = [
-  {
-    date: "2024 - Present",
-    role: "Software Engineer",
-    company: "Bosch Global Software Technologies",
-    description:
-      "Led development of scalable web applications using React and Node.js. Implemented CI/CD pipelines and microservices architecture.",
-    skills: ["React", "Node.js", "AWS", "Docker", "GraphQL"],
-  },
-  {
-    date: "2019 - 2021",
-    role: "Software Engineer",
-    company: "Digital Innovations Ltd",
-    description:
-      "Developed and maintained multiple client projects. Improved application performance by 40% through optimization techniques.",
-    skills: ["Python", "Django", "PostgreSQL", "Redis", "REST APIs"],
-  },
-  {
-    date: "2018 - 2019",
-    role: "Junior Developer",
-    company: "StartUp Hub",
-    description:
-      "Built responsive web applications and contributed to the development of core features.",
-    skills: ["JavaScript", "React", "CSS", "Git"],
-  },
-];
-
-export const skills = {
-  Frontend: ["React", "Next.js", "TypeScript", "TailwindCSS"],
-  Backend: ["Node.js", "Python", "GraphQL", "PostgreSQL"],
-  DevOps: ["AWS", "Docker", "Kubernetes", "CI/CD"],
-};
-
-export const animations = {
-  containerVariants: {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.3 },
+export const portfolioData = {
+  hero: {
+    name: "Sushant Pardhi",
+    title: "Full Stack Developer & Software Engineer",
+    skills: ["JavaScript", "React", "Node.js", "C++", "Typescript"],
+    social: {
+      github: "https://github.com/sushantpardhi",
+      linkedin: "https://www.linkedin.com/in/sushant-pardhi-91a8771b9/",
     },
   },
-  itemVariants: {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
+
+  about: {
+    description:
+      "As a Full Stack Developer and software Engineer, I specialize in building scalable and efficient web applications. With a strong foundation in both frontend and backend technologies, I create seamless user experiences while ensuring robust architecture and performance.",
+    stats: [
+      { number: "1+", label: "Years Experience" },
+      { number: "10+", label: "Projects Completed" },
+    ],
+    resumeLink:
+      "https://drive.google.com/file/d/1KKcd4QBSwXJFyb3E1CdhEhfh3YS1EXpi/view?usp=drive_link",
+    skills: {
+      Frontend: ["React", "TypeScript", "JavaScript", "HTML/CSS"],
+      Backend: ["Node.js", "ExpressJs", "MongoDB"],
+      Programming: ["C", "C++", "Python", "C#"],
+    },
+  },
+
+  experiences: [
+    {
+      date: "2024 - Present",
+      role: "Software Engineer",
+      company: "Bosch Global Software Technologies",
+      description:
+        "Worked on developing and testing software for migrating onPrem sharepoint sites to SharePoint online. Developed and maintained multiple client projects",
+      skills: ["F#", ".NET", "SharePoint", "Azure", "REST APIs"],
+    },
+    {
+      date: "June 2022 - July 2022",
+      role: "Software Developer Intern",
+      company: "VIEH Foundation",
+      description:
+        "Created a Machine Learning model using various algorithms and compared their accuracy. Learned various types of Regression Algorithms. Got an average accuracy of around 89.745589%. Highest accuracy was 96.359889% in Random Forest. Least accuracy was 82.356974% in Linear Regression",
+      skills: [
+        "Python",
+        "Machine Learning",
+        "Deep Learning",
+        "Data Analysis",
+        "Data Visualization",
+      ],
+    },
+  ],
+
+  projects: [
+    {
+      title: "Blog Application",
+      description:
+        "A full-stack React-based blog management platform that enables content creators to manage their blogs, track analytics, and engage with their audience. The platform features a modern, responsive design with real-time analytics and comprehensive admin controls.",
+      technologies: ["React", "Node.JS", "MongoDB", "Express"],
+      githubLink: "https://github.com/sushantpardhi/blog-react2",
+      liveLink: "",
+      category: "fe",
+      screenshots: [
+        "https://images.unsplash.com/photo-1555066931-bf19f8fd1085?w=1200", // Code editor
+        "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200", // Dashboard
+        "https://images.unsplash.com/photo-1549082984-1323b94df9a6?w=1200", // Clean desktop
+      ],
+    },
+  ],
+
+  contact: {
+    email: "sushantgpardhi@gmail.com",
+    form: {
+      submitEndpoint: "https://formspree.io/f/movqbvdz", // Verify this is your correct Formspree endpoint
+      fields: [
+        { name: "name", type: "text", required: true },
+        { name: "email", type: "email", required: true },
+        { name: "message", type: "textarea", required: true },
+      ],
+    },
+  },
+
+  categories: [
+    { id: "all", label: "All Projects" },
+    { id: "fe", label: "Front End" },
+    { id: "be", label: "Back End" },
+  ],
+
+  animations: {
+    containerVariants: {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.3 },
+      },
+    },
+    itemVariants: {
+      hidden: { y: 20, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.6 },
+      },
     },
   },
 };
+
+// Keep the individual exports for backward compatibility
+export const {
+  hero,
+  about,
+  experiences,
+  projects,
+  categories,
+  animations,
+  contact,
+} = portfolioData;

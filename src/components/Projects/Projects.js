@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Projects.module.css";
 import { projects, categories, animations } from "../../constants/data";
+import ProjectModal from "./ProjectModal";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects = projects.filter((project) =>
     activeCategory === "all" ? true : project.category === activeCategory
@@ -41,7 +43,7 @@ const Projects = () => {
           <AnimatePresence mode="wait">
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.title} // Changed from index to project.title
+                key={project.title}
                 className={styles.projectCard}
                 layout
                 initial={{ opacity: 0, y: 20 }}
@@ -49,35 +51,54 @@ const Projects = () => {
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.description}>{project.description}</p>
-                <div className={styles.technologies}>
-                  {project.technologies.map((tech, i) => (
-                    <span key={i} className={styles.tech}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className={styles.links}>
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {project.title && (
+                  <h3 
+                    className={styles.projectTitle} 
+                    onClick={() => setSelectedProject(project)}
                   >
-                    GitHub
-                  </a>
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {project.title}
+                  </h3>
+                )}
+                {project.description && (
+                  <p 
+                    className={styles.description} 
+                    onClick={() => setSelectedProject(project)}
                   >
-                    Live Demo
-                  </a>
-                </div>
+                    {project.description}
+                  </p>
+                )}
+                {project.technologies?.length > 0 && (
+                  <div className={styles.technologies}>
+                    {project.technologies.map((tech, i) => (
+                      <span key={i} className={styles.tech}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {(project.githubLink || project.liveLink) && (
+                  <div className={styles.links}>
+                    {project.githubLink && (
+                      <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                        GitHub
+                      </a>
+                    )}
+                    {project.liveLink && (
+                      <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                )}
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
+
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </motion.div>
     </section>
   );

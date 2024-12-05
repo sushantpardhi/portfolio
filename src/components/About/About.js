@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styles from "./About.module.css";
-import { skills, animations } from "../../constants/data";
+import { portfolioData } from "../../constants/data";
 
 const About = () => {
+  const { about, animations } = portfolioData;
+
   return (
     <section className={styles.about}>
       <motion.div
@@ -16,25 +18,17 @@ const About = () => {
         <div className={styles.grid}>
           <motion.div className={styles.leftColumn} variants={animations.itemVariants}>
             <h2 className={styles.title}>About Me</h2>
-            <p className={styles.content}>
-              As a Full Stack Developer and Cloud Engineer, I specialize in
-              building scalable and efficient web applications. With a strong
-              foundation in both frontend and backend technologies, I create
-              seamless user experiences while ensuring robust architecture and
-              performance.
-            </p>
+            <p className={styles.content}>{about.description}</p>
             <motion.div className={styles.stats}>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>3+</span>
-                <span className={styles.statLabel}>Years Experience</span>
-              </div>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>20+</span>
-                <span className={styles.statLabel}>Projects Completed</span>
-              </div>
+              {about.stats.map((stat, index) => (
+                <div key={index} className={styles.statItem}>
+                  <span className={styles.statNumber}>{stat.number}</span>
+                  <span className={styles.statLabel}>{stat.label}</span>
+                </div>
+              ))}
             </motion.div>
             <motion.div className={styles.resumeButton} variants={animations.itemVariants}>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href={about.resumeLink} target="_blank" rel="noopener noreferrer">
                 View Resume
               </a>
             </motion.div>
@@ -44,7 +38,7 @@ const About = () => {
             <div className={styles.techStack}>
               <h3>Technical Expertise</h3>
               <div className={styles.skillGroups}>
-                {Object.entries(skills).map(([category, categorySkills]) => (
+                {Object.entries(about.skills).map(([category, categorySkills]) => (
                   <div key={category} className={styles.skillGroup}>
                     <h4>{category}</h4>
                     <ul>

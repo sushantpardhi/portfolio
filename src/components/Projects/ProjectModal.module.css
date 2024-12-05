@@ -1,0 +1,308 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
+  padding: 2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 10px;
+}
+
+.modalContent {
+  background: linear-gradient(
+    165deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  padding: 2.5rem;
+  border-radius: 24px;
+  max-width: 900px;
+  width: 95%;
+  min-height: min-content;
+  margin: auto;
+  position: relative;
+  border: 1px solid rgba(97, 218, 251, 0.15);
+  overflow: visible;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 5px 15px rgba(97, 218, 251, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transform-origin: center;
+  animation: modalAppear 0.3s ease-out;
+}
+
+.modalContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: rgba(97, 218, 251, 0.05);
+  border-radius: 10px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: rgba(97, 218, 251, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(97, 218, 251, 0.5);
+}
+
+.modalTitle {
+  font-size: 2.75rem;
+  background: linear-gradient(90deg, #61dafb, #99ecff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.modalDescription {
+  color: #abb2bf;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  white-space: pre-line;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(97, 218, 251, 0.08);
+  border: 1px solid rgba(97, 218, 251, 0.15);
+  color: #61dafb;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.closeButton:hover {
+  background: rgba(97, 218, 251, 0.15);
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 0 15px rgba(97, 218, 251, 0.2);
+}
+
+.modalLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(97, 218, 251, 0.2);
+}
+
+.modalLinks a {
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  background: rgba(97, 218, 251, 0.1);
+  color: #61dafb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  border: 1px solid rgba(97, 218, 251, 0.2);
+}
+
+.modalLinks a:hover {
+  background: rgba(97, 218, 251, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.2);
+}
+
+.screenshotContainer {
+  position: relative;
+  width: 100%;
+  margin: 2rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  max-height: 50vh;
+}
+
+.screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.screenshotContainer:hover .navButton {
+  opacity: 1;
+}
+
+.prevButton {
+  left: 1rem;
+}
+
+.nextButton {
+  right: 1rem;
+}
+
+.navButton:hover {
+  background: rgba(97, 218, 251, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  background: #61dafb;
+  transform: scale(1.2);
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.tech {
+  background: rgba(97, 218, 251, 0.1);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #61dafb;
+  border: 1px solid rgba(97, 218, 251, 0.2);
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.tech:hover {
+  background: rgba(97, 218, 251, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.1);
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .modalContent {
+    height: 90vh;
+    padding: 1.75rem;
+    gap: 1.25rem;
+    min-height: min-content;
+    margin: 1rem auto;
+  }
+  
+  .modalTitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .modalLinks {
+    flex-direction: column;
+  }
+  
+  .modalLinks a {
+    text-align: center;
+  }
+
+  .navButton {
+    opacity: 1;
+    width: 35px;
+    height: 35px;
+  }
+
+  .screenshotContainer {
+    max-height: 40vh;
+  }
+
+  .closeButton {
+    top: 1rem;
+    right: 1rem;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  .modalContent {
+    min-height: min-content;
+    margin: 1rem auto;
+  }
+
+  .technologies {
+    gap: 0.6rem;
+  }
+
+  .tech {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+}

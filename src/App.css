@@ -43,6 +43,20 @@
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
+  transform: scale(0.9);
+  opacity: 0;
+  animation: modalAppear 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modalAppear {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .modal-content h2 {
@@ -92,7 +106,9 @@ body.content-visible .content-wrapper {
 }
 
 .modal-overlay.fade-out {
-  animation: fadeOut 1s ease-in-out forwards;
+  animation: fadeOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
 }
 
 .App.animate-out {
@@ -131,3 +147,5 @@ body.content-visible .content-wrapper > *:first-child {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Remove loading indicator styles and other enhanced animations */

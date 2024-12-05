@@ -2,8 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import styles from "./Hero.module.css";
+import { portfolioData } from "../../constants/data";
 
 const Hero = () => {
+  const { hero } = portfolioData;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,36 +39,22 @@ const Hero = () => {
         <div className={styles.shape1}></div>
         <div className={styles.shape2}></div>
         <motion.h1 className={styles.title} variants={itemVariants}>
-          {"<Sushant Pardhi />"}
+          {`<${hero.name} />`}
         </motion.h1>
         <motion.p className={styles.subtitle} variants={itemVariants}>
-          Full Stack Developer & Software Engineer
+          {hero.title}
         </motion.p>
         <motion.p className={styles.description} variants={itemVariants}>
-          const skills = ["React", "Node.js","Python", "Docker", "GraphQL"];
+          {`const skills = ${JSON.stringify(hero.skills)};`}
         </motion.p>
         <motion.div className={styles.socialLinks} variants={itemVariants}>
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub className={styles.socialIcon} />
-          </a>
-          <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin className={styles.socialIcon} />
-          </a>
-          <a
-            href="https://twitter.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaTwitter className={styles.socialIcon} />
-          </a>
+          {Object.entries(hero.social).map(([platform, url]) => (
+            <a key={platform} href={url} target="_blank" rel="noopener noreferrer">
+              {platform === 'github' && <FaGithub className={styles.socialIcon} />}
+              {platform === 'linkedin' && <FaLinkedin className={styles.socialIcon} />}
+              {platform === 'twitter' && <FaTwitter className={styles.socialIcon} />}
+            </a>
+          ))}
         </motion.div>
       </motion.div>
     </section>
